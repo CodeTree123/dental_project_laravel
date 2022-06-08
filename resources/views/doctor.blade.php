@@ -71,8 +71,8 @@
                                         <i class="fa-solid fa-gear"></i></a>
                                         <ul class="dropdown-menu">
 
-                                            <li><a class="dropdown-item" href="{{route('profile_edit')}}">Edit Profile</a></li>
-                                            <li><a class="dropdown-item" href="#">Log Out</a></li>
+                                            <li><a class="dropdown-item" href="{{route('profile_edit',[$doctor_info->id])}}">Edit Profile</a></li>
+                                            <li><a class="dropdown-item" href="{{route('logout')}}">Log Out</a></li>
 
                                         </ul>
                                         </a>
@@ -83,7 +83,7 @@
                                         <a class="nav-link " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-gear"></i></a>
                                         <ul class="dropdown-menu">
 
-                                            <li><a class="dropdown-item" href="{{route('profile_edit')}}">Edit Profile</a></li>
+                                            <li><a class="dropdown-item" href="#">Edit Profile</a></li>
                                             <li><a class="dropdown-item" href="#">Log Out</a></li>
 
                                         </ul>
@@ -108,7 +108,7 @@
                             <!-- <img src="img/banner.jpg" class="cover"> -->
                             <img src="{{ asset('assets/img/profile.png')}}" class="doctor-profile my-4">
 
-                            <h2 class="mb-2">Dr Abduallah Bin Sayeed</h2>
+                            <h2 class="mb-2">{{$doctor_info->name}}</h2>
                             <p class="mb-2">Dental Consulatant of the Royal <br>Dental</p>
                             <a href="#_" class="btns mb-2">This Month</a>
                             <p class="mb-2">SMS Remaining : 50</p>
@@ -243,10 +243,11 @@
                     <!-- Search & New Patient Start -->
                     <div class="row m-0">
                         <div class="col-md-6 search-border-left ">
-                            <form action="{{route('search')}}" method="POST">
+                            <form action="{{route('search',[$doctor_info->id])}}" method="POST">
                                 @csrf
                                 <input type="text" placeholder="Search Old Patient" name="search" class="search-input">
-                                <button class="search-btn">Search</button>
+                                <button class="search-btn me-5">Search</button>
+                                <span class="text-danger ms-2">@error('search') {{$message}} @enderror</span>
                             </form>
                         </div>
                         <div class="col-md-6 search-border-right">
@@ -276,10 +277,21 @@
                                                         <input type="number" name="mobile" class="form-control" placeholder="Mobile No">
                                                         <!-- <div class="form-text"></div> -->
                                                     </div>
-                                                    <div class="mb-3">
+                                                    <div class="row">
+                                                        <div class="col-9">
+                                                        <div class="mb-3">
                                                         <!-- <label for="exampleInputEmail1" class="form-label text-dark">Name</label> -->
                                                         <input type="name" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name">
                                                         <!-- <div id="emailHelp" class="form-text"></div> -->
+                                                    </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                        <div class="mb-3">
+                                                        <!-- <label for="exampleInputEmail1" class="form-label text-dark">Name</label> -->
+                                                        <input type="number" name="age" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Age">
+                                                        <!-- <div id="emailHelp" class="form-text"></div> -->
+                                                    </div>
+                                                        </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col">
@@ -353,9 +365,6 @@
                                                 </form>
                                             </div>
                                             <!-- Modal Body end -->
-
-
-
                                         </div>
                                     </div>
                                 </div>
@@ -597,6 +606,17 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <script>
+        const search = document.getElementById("search");
+        const p_info = document.getElementById("p_info");
+
+        p_info.style.display = "none";
+
+        search.onclick = function() {  
+            p_info.style.display = "table";
+        }; 
+
     </script>
 </body>
 

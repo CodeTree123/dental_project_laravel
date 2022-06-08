@@ -67,27 +67,18 @@
                                         <a class="nav-link" href="#"><i class="fa-solid fa-envelope"></i></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">My Profile
-                                        <i class="fa-solid fa-gear"></i></a>
-                                        <ul class="dropdown-menu">
-
-                                            <li><a class="dropdown-item" href="{{route('profile_edit')}}">Edit Profile</a></li>
-                                            <li><a class="dropdown-item" href="#">Log Out</a></li>
-
-                                        </ul>
-                                        </a>
-
+                                        <a class="nav-link" href="#">My Profile</a>
                                     </li>
 
-                                    <!-- <li class="nav-item dropdown">
+                                    <li class="nav-item dropdown">
                                         <a class="nav-link " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-gear"></i></a>
                                         <ul class="dropdown-menu">
 
-                                            <li><a class="dropdown-item" href="{{route('profile_edit')}}">Edit Profile</a></li>
-                                            <li><a class="dropdown-item" href="#">Log Out</a></li>
+                                            <li><a class="dropdown-item" href="{{route('profile_edit',[$doctor_info->id])}}">Edit Profile</a></li>
+                                            <li><a class="dropdown-item" href="{{route('logout')}}">Log Out</a></li>
 
                                         </ul>
-                                    </li> -->
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -108,7 +99,7 @@
                             <!-- <img src="img/banner.jpg" class="cover"> -->
                             <img src="{{ asset('assets/img/profile.png')}}" class="doctor-profile my-4">
 
-                            <h2 class="mb-2">Dr Abduallah Bin Sayeed</h2>
+                            <h2 class="mb-2">{{$doctor_info->name}}</h2>
                             <p class="mb-2">Dental Consulatant of the Royal <br>Dental</p>
                             <a href="#_" class="btns mb-2">This Month</a>
                             <p class="mb-2">SMS Remaining : 50</p>
@@ -243,7 +234,7 @@
                     <!-- Search & New Patient Start -->
                     <div class="row m-0">
                         <div class="col-md-6 search-border-left ">
-                            <form action="{{route('search')}}" method="POST">
+                            <form action="{{route('search',[$doctor_info->id])}}" method="POST">
                                 @csrf
                                 <input type="text" placeholder="Search Old Patient" name="search" class="search-input">
                                 <button class="search-btn">Search</button>
@@ -363,9 +354,146 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Search Result For Patient start -->
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>mobile</th>
+                                <th>Patient ID:</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                @foreach($patient as $p)
+                                    <td>{{$p->name}}</td>
+                                    <td>{{$p->mobile}}</td>
+                                    <td>{{$p->id}}</td>
+                                    <td>
+                                        <a href="{{route('view_patient',[$doctor_info->id,$p->id])}}" >View</a>
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#patitentUpdate" >Edit</a>
+                                        <a href="#" >Delete</a>
+                                    </td>
+                                @endforeach
+                            </tr>
+                        </tbody>
+
+                    </table>
+                    <!--Search Result For Patient end -->
+                    <!-- Modal For Uptade Patient Information-->
+                    <div class="modal fade " id="patitentUpdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <!-- Modal Header & Close btn -->
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-dark" id="exampleModalLabel">
+                                        Uptade Patient Information
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <!-- Modal Header & Close btn end -->
+                                <!-- Modal Body -->
+                                <div class="modal-body">
+                                    <form action="{{route('patient_info')}}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                        <div class="mb-3">
+                                            <!-- <label for="exampleInputEmail1" class="form-label text-dark">Mobile no.</label> -->
+                                            <input type="number" name="mobile" class="form-control" placeholder="Mobile No">
+                                            <!-- <div class="form-text"></div> -->
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-9">
+                                                <div class="mb-3">
+                                                    <!-- <label for="exampleInputEmail1" class="form-label text-dark">Name</label> -->
+                                                    <input type="name" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name">
+                                                    <!-- <div id="emailHelp" class="form-text"></div> -->
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="mb-3">
+                                                <!-- <label for="exampleInputEmail1" class="form-label text-dark">Name</label> -->
+                                                     <input type="number" name="age" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Age">
+                                                        <!-- <div id="emailHelp" class="form-text"></div> -->
+                                                </div>
+                                            </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="mb-3">
+                                                                <!-- <label for="mName" class="form-label text-dark">Gender</label> -->
+                                                                <select class="form-select" name="gender" aria-label="Gender">
+                                                                    <option selected>Select gender</option>
+                                                                    <option value="Male">Male</option>
+                                                                    <option value="Female">Female</option>
+                                                                    <option value="Other">Others</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="mb-3">
+                                                                <!-- <label for="mName" class="form-label text-dark">Blood Group</label> -->
+                                                                <select class="form-select" name="Blood_group" aria-label="Blood Group">
+                                                                    <option selected> Patient's Blood Group
+                                                                    </option>
+                                                                    <option value="a+">A+</option>
+                                                                    <option value="a-">A-</option>
+                                                                    <option value="b+">B+</option>
+                                                                    <option value="b-">B-</option>
+                                                                    <option value="ab-">AB+</option>
+                                                                    <option value="ab-">AB-</option>
+                                                                    <option value="o+">O+</option>
+                                                                    <option value="o-">O-</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="mb-3">
+                                                                <!-- <label for="mName" class="form-label text-dark">Date of Birth</label> -->
+                                                                <!-- <br> class="msform"-->
+                                                                <input class="form-control" name="date" type="date" placeholder=" ">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="mb-3">
+                                                                <!-- <label for="exampleInputEmail1" class="form-label text-dark">Occupation</label> -->
+                                                                <input type="text" class="form-control" name="occupation" placeholder="Occupation">
+                                                                <!-- <div class="form-text"></div> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
 
-
+                                                    <div class="mb-3">
+                                                        <!-- <label for="exampleInputEmail1" class="form-label text-dark">Address</label> -->
+                                                        <input type="address" class="form-control" name="address" placeholder="Address">
+                                                        <!-- <div class="form-text"></div> -->
+                                                    </div>
+                                                    <div class="">
+                                                        <!-- <label for="exampleInputEmail1" class="form-label text-dark">Email address</label> -->
+                                                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email address">
+                                                        <div id="emailHelp" class="form-text">We'll never share your
+                                                            email with anyone else.</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <label for="formFile" name="image" class="form-label text-dark">Drop your
+                                                            image</label>
+                                                        <input class="form-control" name="image" type="file" id="formFile">
+                                                    </div>
+                                                    <!-- Modal Footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                                                        <button class="btn btn-primary  btn-sm">Save
+                                                            changes</button>
+                                                        <!-- Modal Footer end -->
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <!-- Modal Body end -->
+                                        </div>
+                                    </div>
+                    </div>
+                    <!-- Modal end -->
                     <!-- Search & New Patient end-->
                     <!--Appointment Start  -->
                     <div class="Appointment-sec my-3">

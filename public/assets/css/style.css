@@ -4,6 +4,26 @@
 body {
     background: #f1f1f1;
 }
+#tooth_no[type="text"] {
+    background-color: #ccc;
+    border: none;
+    width: 14%;
+    font-weight: 500;
+    font-size: 22px;
+}
+#tooth_side[type="text"]{
+    background-color: #ccc;
+    border: none;
+    width: auto;
+    font-weight: 500;
+    font-size: 22px;
+}
+#tooth_type{
+    border: none;
+    width: auto;
+    opacity: 0;
+}
+
 .header {
     background: #fff;
 }
@@ -1175,11 +1195,11 @@ span.pr-cl-red {
 }
 
 .tools-h {
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     align-content: center;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; */
     background: #ccc;
 }
 .tools-h h3 {

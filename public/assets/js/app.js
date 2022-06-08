@@ -1,8 +1,8 @@
 const one = document.querySelector("#permanent");
-const three = document.querySelector("#deciduous")
+const three = document.querySelector("#deciduous");
 const two = document.querySelector(".tool-out");
-const hi = document.getElementById("hi");
-const hello = document.getElementById("hello");
+const tooth_no = document.getElementById("tooth_no");
+const tooth_side = document.getElementById("tooth_side");
 
 let twoSide = window.getComputedStyle(two,'::before');
 let twoSide2 = window.getComputedStyle(two,'::after');
@@ -10,22 +10,22 @@ let twoSide2 = window.getComputedStyle(two,'::after');
 
 one.addEventListener("click",function(e){
         var trid = e.target.id;
-        hi.innerText = "Tooth No."+ trid;
+        tooth_no.value = trid;
         two.style.display = "block";
-        if (trid <= 8){
-                hello.innerText = "Upper Right";
+        if (trid > 10 && trid < 19){
+                tooth_side.value = "Upper Right";
         }
-        else if (trid <= 16){
-                hello.innerText = "Upper Left";
+        else if (trid > 20 && trid < 29){
+                tooth_side.value = "Upper Left";
         }
-        else if (trid <= 24){
-                hello.innerText = "Lower Right";
+        else if (trid > 30 && trid < 39){
+                tooth_side.value = "Lower Right";
         }
-        else if (trid <= 32){
-                hello.innerText = "Lower Left";
+        else if (trid > 40 && trid < 49){
+                tooth_side.value = "Lower Left";
         }
 
-        if(trid == 1){
+        if(trid == 18){
                 // two.style.left = "-55px";
                 // two.style.top = "175px";
                 two.style.left = "-6%";
@@ -33,7 +33,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','visible');
                 two.style.setProperty('--show2','hidden');
         }
-        else if(trid == 2){
+        else if(trid == 17){
                 // two.style.left = "15px";
                 // two.style.top = "175px";
                 two.style.left = "-1%";
@@ -41,7 +41,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','visible');
                 two.style.setProperty('--show2','hidden'); 
         }
-        else if(trid == 3){
+        else if(trid == 16){
                 // two.style.left = "82px";
                 // two.style.top = "175px";
                 two.style.left = "4%";
@@ -49,7 +49,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','visible');
                 two.style.setProperty('--show2','hidden'); 
         }
-        else if(trid == 4){
+        else if(trid == 15){
                 // two.style.left = "142px";
                 // two.style.top = "172px";
                 two.style.left = "9%";
@@ -57,7 +57,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','visible');
                 two.style.setProperty('--show2','hidden'); 
         }
-        else if(trid == 5){
+        else if(trid == 14){
                 // two.style.left = "212px";
                 // two.style.top = "172px";
                 two.style.left = "14%";
@@ -65,7 +65,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','visible');
                 two.style.setProperty('--show2','hidden');
         }
-        else if(trid == 6){
+        else if(trid == 13){
                 // two.style.left = "276px";
                 // two.style.top = "172px";
                 two.style.left = "19%";
@@ -73,7 +73,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','visible');
                 two.style.setProperty('--show2','hidden');
         }
-        else if(trid == 7){
+        else if(trid == 12){
                 // two.style.left = "353px";
                 // two.style.top = "172px"; 
                 two.style.left = "25%";
@@ -81,7 +81,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','visible');
                 two.style.setProperty('--show2','hidden');
         }
-        else if(trid == 8){
+        else if(trid == 11){
                 // two.style.left = "422px";
                 // two.style.top = "172px"; 
                 two.style.left = "30%";
@@ -89,7 +89,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','visible');
                 two.style.setProperty('--show2','hidden');
         }
-        else if(trid == 9){
+        else if(trid == 21){
                 // two.style.right = "417px";
                 // two.style.top = "170px"; 
                 two.style.right = "29%";
@@ -97,7 +97,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','hidden');
                 two.style.setProperty('--show2','visible');
         }
-        else if(trid == 10){
+        else if(trid == 22){
                 // two.style.right = "346px";
                 // two.style.top = "170px"; 
                 two.style.right = "24%";
@@ -105,7 +105,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','hidden');
                 two.style.setProperty('--show2','visible');
         }
-        else if(trid == 11){
+        else if(trid == 23){
                 // two.style.right = "216px";
                 // two.style.top = "170px"; 
                 two.style.right = "19%";
@@ -113,7 +113,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','hidden');
                 two.style.setProperty('--show2','visible');
         }
-        else if(trid == 12){
+        else if(trid == 24){
                 // two.style.right = "360px";
                 // two.style.top = "170px"; 
                 two.style.right = "13%";
@@ -121,7 +121,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','hidden');
                 two.style.setProperty('--show2','visible');
         }
-        else if(trid == 13){
+        else if(trid == 25){
                 // two.style.right = "360px";
                 // two.style.top = "170px"; 
                 two.style.right = "8%";
@@ -129,7 +129,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','hidden');
                 two.style.setProperty('--show2','visible');
         }
-        else if(trid == 14){
+        else if(trid == 26){
                 // two.style.right = "360px";
                 // two.style.top = "170px"; 
                 two.style.right = "3%";
@@ -137,7 +137,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','hidden');
                 two.style.setProperty('--show2','visible');
         }
-        else if(trid == 15){
+        else if(trid == 27){
                 // two.style.right = "360px";
                 // two.style.top = "170px"; 
                 two.style.right = "-2%";
@@ -145,7 +145,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','hidden');
                 two.style.setProperty('--show2','visible');
         }
-        else if(trid == 16){
+        else if(trid == 28){
                 // two.style.right = "360px";
                 // two.style.top = "170px"; 
                 two.style.right = "-7%";
@@ -153,7 +153,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','hidden');
                 two.style.setProperty('--show2','visible');
         }
-        else if(trid == 17){
+        else if(trid == 38){
                 // two.style.right = "417px";
                 // two.style.top = "170px"; 
                 two.style.right = "-7%";
@@ -161,7 +161,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','hidden');
                 two.style.setProperty('--show2','visible');
         }
-        else if(trid == 18){
+        else if(trid == 37){
                 // two.style.right = "346px";
                 // two.style.top = "170px"; 
                 two.style.right = "-2%";
@@ -169,7 +169,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','hidden');
                 two.style.setProperty('--show2','visible');
         }
-        else if(trid == 19){
+        else if(trid == 36){
                 // two.style.right = "216px";
                 // two.style.top = "170px"; 
                 two.style.right = "3%";
@@ -177,7 +177,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','hidden');
                 two.style.setProperty('--show2','visible');
         }
-        else if(trid == 20){
+        else if(trid == 35){
                 // two.style.right = "360px";
                 // two.style.top = "170px"; 
                 two.style.right = "8%";
@@ -185,7 +185,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','hidden');
                 two.style.setProperty('--show2','visible');
         }
-        else if(trid == 21){
+        else if(trid == 34){
                 // two.style.right = "360px";
                 // two.style.top = "170px"; 
                 two.style.right = "13%";
@@ -193,7 +193,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','hidden');
                 two.style.setProperty('--show2','visible');
         }
-        else if(trid == 22){
+        else if(trid == 33){
                 // two.style.right = "360px";
                 // two.style.top = "170px"; 
                 two.style.right = "18%";
@@ -201,7 +201,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','hidden');
                 two.style.setProperty('--show2','visible');
         }
-        else if(trid == 23){
+        else if(trid == 32){
                 // two.style.right = "360px";
                 // two.style.top = "170px"; 
                 two.style.right = "23%";
@@ -209,7 +209,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','hidden');
                 two.style.setProperty('--show2','visible');
         }
-        else if(trid == 24){
+        else if(trid == 31){
                 // two.style.right = "360px";
                 // two.style.top = "170px"; 
                 two.style.right = "29%";
@@ -219,7 +219,7 @@ one.addEventListener("click",function(e){
         }
 
 
-        else if(trid == 25){
+        else if(trid == 41){
                 // two.style.left = "-55px";
                 // two.style.top = "175px";
                 two.style.left = "29%";
@@ -227,7 +227,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','visible');
                 two.style.setProperty('--show2','hidden');
         }
-        else if(trid == 26){
+        else if(trid == 42){
                 // two.style.left = "15px";
                 // two.style.top = "175px";
                 two.style.left = "24%";
@@ -235,7 +235,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','visible');
                 two.style.setProperty('--show2','hidden'); 
         }
-        else if(trid == 27){
+        else if(trid == 43){
                 // two.style.left = "82px";
                 // two.style.top = "175px";
                 two.style.left = "19%";
@@ -243,7 +243,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','visible');
                 two.style.setProperty('--show2','hidden'); 
         }
-        else if(trid == 28){
+        else if(trid == 44){
                 // two.style.left = "142px";
                 // two.style.top = "172px";
                 two.style.left = "14%";
@@ -251,7 +251,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','visible');
                 two.style.setProperty('--show2','hidden'); 
         }
-        else if(trid == 29){
+        else if(trid == 45){
                 // two.style.left = "212px";
                 // two.style.top = "172px";
                 two.style.left = "8%";
@@ -259,7 +259,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','visible');
                 two.style.setProperty('--show2','hidden');
         }
-        else if(trid == 30){
+        else if(trid == 46){
                 // two.style.left = "276px";
                 // two.style.top = "172px";
                 two.style.left = "4%";
@@ -267,7 +267,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','visible');
                 two.style.setProperty('--show2','hidden');
         }
-        else if(trid == 31){
+        else if(trid == 47){
                 // two.style.left = "353px";
                 // two.style.top = "172px"; 
                 two.style.left = "-1%";
@@ -275,7 +275,7 @@ one.addEventListener("click",function(e){
                 two.style.setProperty('--show','visible');
                 two.style.setProperty('--show2','hidden');
         }
-        else if(trid == 32){
+        else if(trid == 48){
                 // two.style.left = "422px";
                 // two.style.top = "172px"; 
                 two.style.left = "-6%";
@@ -308,7 +308,7 @@ one.addEventListener("click",function(e){
 three.addEventListener("click",function(e){
         console.log(e);
         var dTrid = e.target.id;
-        hi.innerText = "Tooth No."+ dTrid;
+        tooth_no.value = dTrid;
         two.style.display = "block";
         
         if(dTrid == "A"){
